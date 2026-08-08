@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c162c" />
+    <title>Echo Loop Language Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="Echo Loop home">
+          <span class="brand-mark" aria-hidden="true">↗</span>
+          <span>echo<br /><em>loop</em></span>
+        </a>
+
+        <nav class="nav-list">
+          <a class="nav-item active" href="#practice"><span>◉</span> Today</a>
+          <a class="nav-item" href="#skill-map"><span>⌁</span> Skill map</a>
+          <a class="nav-item" href="#review"><span>◌</span> Review queue</a>
+          <a class="nav-item" href="#progress"><span>⌁</span> Progress</a>
+          <a class="nav-item" href="#library"><span>▦</span> Dutch lessons</a>
+          <a class="nav-item" href="#scope"><span>◇</span> Product scope</a>
+        </nav>
+
+        <section class="streak-card" aria-label="Practice streak">
+          <span class="eyebrow">CURRENT RHYTHM</span>
+          <strong><span id="streakCount">0</span> <span id="streakLabel">day streak</span></strong>
+          <div class="streak-dots" id="streakDots" aria-label="Practice days in the last seven days"></div>
+          <small>Consistent retrieval beats cramming.</small>
+        </section>
+
+        <p class="sidebar-foot">Dutch · A1 → B2<br />242 micro-lessons</p>
+      </aside>
+
+      <section class="content" id="top">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">DUTCH CONTENT LIBRARY · 242 MICRO-LESSONS</p>
+            <h1>Make the phrase <em>yours.</em></h1>
+          </div>
+          <div class="top-actions">
+            <span class="sync-status" id="syncStatus" aria-live="polite">Loading your local learner copy…</span>
+            <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle high contrast">◐</button>
+            <button class="profile" id="profileButton" type="button" aria-label="View learner account and progress">PL</button>
+          </div>
+        </header>
+
+        <section class="daily-banner" aria-labelledby="daily-heading">
+          <div class="banner-copy">
+            <p class="eyebrow">TODAY'S DELIBERATE PRACTICE</p>
+            <h2 id="daily-heading">One useful phrase,<br /><em>five escalating moves.</em></h2>
+            <p id="dailyBody">First hear it. Then notice it. By the end, say it without the safety net.</p>
+            <button class="today-button" id="startToday" type="button">Start B1 sprint <span>→</span></button>
+          </div>
+          <div class="orbit" id="progressOrbit" aria-label="Overall lesson progress">
+            <div class="orbit-center"><strong id="progressText">0%</strong><span>complete</span></div>
+          </div>
+          <div class="banner-meta">
+            <span id="sessionGoal">12 min session</span>
+            <span id="retrievalMeta">Phrase retrieval</span>
+            <span id="focusMeta">Prosody focus</span>
+          </div>
+        </section>
+
+        <section class="assignment-banner" id="assignmentCard" hidden aria-labelledby="assignmentTitle">
+          <div><p class="eyebrow">TEACHER ASSIGNMENT</p><h2 id="assignmentTitle">Your assigned phrase set</h2><p id="assignmentDescription"></p></div>
+          <div class="assignment-actions"><span id="assignmentMeta"></span><button class="sprint-button" id="startAssignment" type="button">Practice assignment <span>→</span></button></div>
+        </section>
+
+        <section class="level-path" aria-labelledby="b2-path-heading">
+          <div class="level-path-copy">
+            <p class="eyebrow">CONVERSATION SPRINTS</p>
+            <h2 id="b2-path-heading">Build B1 control, then <em>B2 strategy.</em></h2>
+            <p>Choose three context-rich lessons for everyday B1 fluency or nuanced B2 positions.</p>
+          </div>
+          <div class="level-progress-group" aria-live="polite">
+            <div class="level-progress">
+              <strong><span id="b1Completed">0</span><small>/121</small></strong>
+              <span>B1 lessons practised</span>
+              <div class="level-meter" aria-hidden="true"><i id="b1ProgressBar"></i></div>
+            </div>
+            <div class="level-progress">
+              <strong><span id="b2Completed">0</span><small>/100</small></strong>
+              <span>B2 lessons practised</span>
+              <div class="level-meter" aria-hidden="true"><i id="b2ProgressBar"></i></div>
+            </div>
+          </div>
+          <div class="sprint-actions">
+            <button class="sprint-button secondary" id="startB1Sprint" type="button">Start B1 sprint <span>→</span></button>
+            <button class="sprint-button" id="startB2Sprint" type="button">Start B2 sprint <span>→</span></button>
+          </div>
+        </section>
+
+        <section class="loop-section" id="practice" aria-labelledby="loop-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">THE ECHO LOOP · DUTCH</p>
+              <h2 id="loop-heading">Practice with a purpose</h2>
+            </div>
+            <p class="section-note">Each move asks for a little less support.</p>
+          </div>
+
+          <div class="stepper" role="tablist" aria-label="Practice stages">
+            <button class="step active" role="tab" aria-selected="true" data-step="hear"><b>01</b><span>Hear</span></button>
+            <button class="step" role="tab" aria-selected="false" data-step="notice"><b>02</b><span>Notice</span></button>
+            <button class="step" role="tab" aria-selected="false" data-step="repeat"><b>03</b><span>Repeat</span></button>
+            <button class="step" role="tab" aria-selected="false" data-step="retrieve"><b>04</b><span>Retrieve</span></button>
+            <button class="step" role="tab" aria-selected="false" data-step="transfer"><b>05</b><span>Transfer</span></button>
+          </div>
+
+          <div class="practice-card">
+            <div class="card-topline">
+              <div class="stage-labels"><span class="pill" id="stagePill">01 · HEAR</span><span class="lesson-level" id="lessonLevel">A1–A2</span></div>
+              <span class="card-hint" id="stageHint">Listen for the shape of the thought, not every word.</span>
+            </div>
+
+            <div class="phrase-area">
+              <p class="translation" id="translation">How are you?</p>
+              <h3 id="targetPhrase" lang="nl">Hoe gaat het met je?</h3>
+              <p class="pronunciation" id="pronunciation">hoo khaat ut met yuh</p>
+              <button class="transcript-toggle" id="transcriptToggle" type="button" aria-expanded="true">Hide transcript</button>
+            </div>
+
+            <div class="audio-row">
+              <button class="play-button" id="playModel" type="button" aria-label="Play Dutch model audio"><span id="playIcon">▶</span></button>
+              <div class="audio-track" aria-hidden="true">
+                <div class="audio-progress" id="audioProgress"></div>
+                <div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+              <label class="speed-control">Speed <output id="speedValue">0.9×</output><input id="speedRange" type="range" min="0.7" max="1.1" step="0.1" value="0.9" /></label>
+            </div>
+            <div class="audio-source-row"><span id="audioSource">Checking the lesson audio…</span><div class="audio-loop-actions"><button class="loop-button" id="loopSegment" type="button" aria-pressed="false" hidden>Loop first chunk</button><button class="loop-button" id="loopModel" type="button" aria-pressed="false">Loop model</button></div></div>
+
+            <div class="echo-coach" id="echoCoach" hidden aria-live="polite">
+              <div class="echo-copy"><span class="prompt-index">GUIDED REPEAT</span><strong id="echoModeTitle">Shadow with a small lag.</strong><p id="echoCue">Follow the model one or two syllables behind; prioritise rhythm over perfect words.</p></div>
+              <div class="repeat-modes" id="repeatModes" role="group" aria-label="Choose a listening and repetition method">
+                <button class="repeat-mode selected" type="button" data-repeat-mode="shadow" aria-pressed="true"><strong>Shadow</strong><small>With the model</small></button>
+                <button class="repeat-mode" type="button" data-repeat-mode="delayed" aria-pressed="false"><strong>Delayed echo</strong><small>After a pause</small></button>
+                <button class="repeat-mode" type="button" data-repeat-mode="backchain" aria-pressed="false"><strong>Backchain</strong><small>Build from the end</small></button>
+              </div>
+              <button class="echo-button" id="startEcho" type="button">Run 3 shadows <span>↗</span></button>
+            </div>
+
+            <div class="focus-grid" id="focusGrid">
+              <button class="focus-chip selected" type="button" data-focus="thought groups"><span>↗</span> Thought groups</button>
+              <button class="focus-chip" type="button" data-focus="stress"><span>∿</span> Stress</button>
+              <button class="focus-chip" type="button" data-focus="linking"><span>⟷</span> Linking</button>
+            </div>
+
+            <div class="practice-action" id="practiceAction">
+              <div class="prompt-copy">
+                <span class="prompt-index">UP NEXT</span>
+                <strong id="actionTitle">Play it once without reading.</strong>
+                <p id="actionBody">Aim for the question’s rise and fall. Meaning can wait for the next pass.</p>
+              </div>
+              <button class="primary-button" id="stageAction" type="button">I listened <span>→</span></button>
+            </div>
+
+            <div class="recall-rating" id="recallRating" hidden aria-live="polite">
+              <div><span class="prompt-index">RETRIEVAL SIGNAL</span><strong>How did that recall feel?</strong><p>Choose the honest signal. It decides how soon this phrase should return.</p></div>
+              <div class="rating-actions">
+                <button class="rating-button" type="button" data-rating="again">Not yet</button>
+                <button class="rating-button" type="button" data-rating="hint">With a hint</button>
+                <button class="rating-button solid" type="button" data-rating="solid">On my own</button>
+              </div>
+            </div>
+
+            <div class="transfer-composer" id="transferComposer" hidden>
+              <div class="transfer-copy"><span class="prompt-index">MAKE IT YOURS</span><strong>Write one true variation.</strong><p>Keep the useful frame, but change a detail so the Dutch becomes yours.</p></div>
+              <label for="transferNote">My Dutch variation<textarea id="transferNote" lang="nl" maxlength="280" placeholder="Bijvoorbeeld: Ik ben van plan om volgende maand een nieuwe cursus te volgen."></textarea></label>
+              <div class="transfer-actions"><span id="transferStatus">Optional and stored only on this device.</span><button class="save-variation" id="saveTransferNote" type="button">Save variation</button></div>
+            </div>
+
+            <div class="recording-area" id="recordingArea" hidden>
+              <div class="recording-status"><span class="record-dot"></span><span id="recordingLabel">Ready to capture your attempt</span></div>
+              <div class="recording-actions">
+                <button class="record-button" id="recordButton" type="button">● <span>Record attempt</span></button>
+                <audio id="recordedAudio" controls hidden></audio>
+              </div>
+              <p class="supporting-text" id="recordingFeedback">Your recording stays in this browser unless you choose to share it later.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="two-column" id="skill-map">
+          <article class="insight-card">
+            <div class="section-heading compact">
+              <div><p class="eyebrow">ADAPTIVE SIGNAL</p><h2>Your next best move</h2></div>
+              <span class="signal-mark">✦</span>
+            </div>
+            <p class="insight-lead" id="adaptiveLead">You can imitate the phrase, but recall is still fragile.</p>
+            <div class="recommendation"><span class="recommendation-number">04</span><div><strong id="recommendationTitle">Retrieve after a delay</strong><p id="recommendationBody">Hide the model and reconstruct the whole phrase before you hear it again.</p></div></div>
+            <div class="practice-check" id="practiceCheck">
+              <div><span class="prompt-index">PRACTICE CHECK</span><strong>Where does it break down?</strong><p id="practiceCheckSummary">Choose the clearest signal. Echo Loop will recommend a repeat method, not analyze your recording.</p></div>
+              <div class="practice-check-actions" role="group" aria-label="Choose your current listening and repetition challenge">
+                <button class="practice-check-option" type="button" data-practice-challenge="rhythm" aria-pressed="false">I lose the rhythm</button>
+                <button class="practice-check-option" type="button" data-practice-challenge="memory" aria-pressed="false">I forget after listening</button>
+                <button class="practice-check-option" type="button" data-practice-challenge="length" aria-pressed="false">Long phrases fall apart</button>
+              </div>
+              <button class="apply-practice-plan" id="applyPracticePlan" type="button">Use recommended practice plan</button>
+            </div>
+            <div class="learning-metrics" aria-live="polite">
+              <div><span>Independent recall</span><strong id="independentRecall">—</strong></div>
+              <div><span>Supported recall</span><strong id="supportedRecall">—</strong></div>
+              <div><span>Retrieval attempts</span><strong id="retrievalAttempts">0</strong></div>
+            </div>
+            <p class="schedule-reason" id="scheduleReason">Complete a retrieval attempt to see why this phrase is scheduled next.</p>
+          </article>
+
+          <article class="review-card" id="review">
+            <div class="section-heading compact"><div><p class="eyebrow">SPACED REVIEW</p><h2>Coming back matters</h2></div><span class="review-count" id="reviewCount">0</span></div>
+            <p class="review-summary" id="reviewSummary">Complete a lesson to add its first retrieval check-in.</p>
+            <ul class="review-list" id="reviewList"></ul>
+          </article>
+        </section>
+
+        <section class="progress-section" id="progress" aria-labelledby="progress-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">LEARNER-OWNED RECORD</p>
+              <h2 id="progress-heading">Progress that reflects <em>retrieval.</em></h2>
+            </div>
+            <p class="section-note" id="progressStorageNote">Your learner data stays in this browser.</p>
+          </div>
+          <div class="progress-grid" aria-live="polite">
+            <article><span>PHRASES PRACTISED</span><strong id="phrasesPractised">0</strong><p>Completed through transfer</p></article>
+            <article><span>SESSIONS FINISHED</span><strong id="sessionsCompleted">0</strong><p>Full five-stage loops</p></article>
+            <article><span>READY FOR REVIEW</span><strong id="reviewsReady">0</strong><p>Require effortful recall</p></article>
+            <article><span>TRANSFER VARIATIONS</span><strong id="variationsSaved">0</strong><p>Personal Dutch responses</p></article>
+          </div>
+          <div class="data-controls">
+            <div><span class="prompt-index">PRIVACY</span><strong>Progress and recordings stay on this device</strong><p>Progress, retrieval outcomes, and written variations stay in this browser. Microphone recordings remain on this device and are never included in exports. After one visit, the practice shell can remain available during a temporary connection loss.</p></div>
+            <div class="data-actions"><button class="export-button" id="exportProgress" type="button">Download my learning data</button><button class="reset-button" id="resetProgress" type="button">Erase learning data</button></div>
+          </div>
+        </section>
+
+        <section class="content-library" id="library" aria-labelledby="library-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">DUTCH CONTENT LIBRARY</p>
+              <h2 id="library-heading">A growing set for real life</h2>
+            </div>
+            <p class="section-note"><span id="contentCount">242</span> short lessons · each with a context and transfer prompt.</p>
+          </div>
+          <div class="library-toolbar" id="levelFilters" aria-label="Filter Dutch lessons by level">
+            <button class="level-filter selected" type="button" data-level="all" aria-pressed="true">All levels</button>
+            <button class="level-filter" type="button" data-level="A1–A2" aria-pressed="false">A1–A2</button>
+            <button class="level-filter" type="button" data-level="B1" aria-pressed="false">B1</button>
+            <button class="level-filter" type="button" data-level="B2" aria-pressed="false">B2</button>
+          </div>
+          <div class="content-grid" id="contentGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="scope-section" id="scope" aria-labelledby="scope-heading">
+          <div class="scope-heading"><p class="eyebrow">IMPLEMENTATION BLUEPRINT</p><h2 id="scope-heading">Built to protect the learning science</h2><p>The product does not reward empty playback. It moves each phrase toward independent, contextualized use.</p></div>
+          <div class="scope-grid">
+            <article><span>01</span><h3>Learning engine</h3><p>Stage state, item confidence, spaced intervals, retrieval outcomes, and remediation rules are stored per phrase.</p></article>
+            <article><span>02</span><h3>Content system</h3><p>Every clip carries a transcript, translation, prosody cues, target chunks, audio variants, and transfer prompts.</p></article>
+            <article><span>03</span><h3>Feedback layer</h3><p>Start with timing, completeness, and self-comparison. Add speech analysis only with confidence-aware, explainable feedback.</p></article>
+            <article><span>04</span><h3>Privacy by design</h3><p>Keep prototype progress and recordings on-device. Make cloud sync and teacher sharing explicit opt-ins.</p></article>
+          </div>
+          <a class="scope-link" href="TECHNICAL_SCOPE.md" target="_blank">Read the full technical scope <span>→</span></a>
+        </section>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
