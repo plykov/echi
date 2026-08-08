@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0c162c" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Echo Loop" />
     <title>Echo Loop Language Lab</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/icon-180.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -45,6 +51,7 @@
           </div>
           <div class="top-actions">
             <span class="sync-status" id="syncStatus" aria-live="polite">Loading your local learner copy…</span>
+            <button class="install-button" id="installApp" type="button" hidden>Install app</button>
             <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle high contrast">◐</button>
             <button class="profile" id="profileButton" type="button" aria-label="View learner account and progress">PL</button>
           </div>
@@ -268,6 +275,14 @@
         </section>
       </section>
     </main>
+    <div class="install-guide" id="installGuide" hidden role="dialog" aria-modal="true" aria-labelledby="installGuideTitle">
+      <div class="install-guide-card">
+        <span class="prompt-index">INSTALL ECHO LOOP</span>
+        <h2 id="installGuideTitle">Add it to your Home Screen</h2>
+        <p>In Safari, tap the Share button, choose <strong>Add to Home Screen</strong>, then tap <strong>Add</strong>. Echo Loop will open like a phone app and keep its offline practice shell.</p>
+        <button class="install-guide-close" id="closeInstallGuide" type="button">Got it</button>
+      </div>
+    </div>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
     <script src="app.js"></script>
   </body>

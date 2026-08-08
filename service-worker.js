@@ -1,9 +1,13 @@
-const CACHE_NAME = "echo-loop-pages-v1";
+const CACHE_NAME = "echo-loop-pages-v2";
 const CORE_SHELL = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
+  "./manifest.webmanifest",
+  "./assets/icon-192.png",
+  "./assets/icon-512.png",
+  "./assets/icon-180.png",
 ];
 
 self.addEventListener("install", (event) => {

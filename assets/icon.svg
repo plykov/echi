@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Echo Loop">
+  <rect width="512" height="512" rx="112" fill="#0c162c"/>
+  <circle cx="256" cy="256" r="172" fill="none" stroke="#a6d6be" stroke-width="32" stroke-dasharray="766 110" transform="rotate(-42 256 256)"/>
+  <circle cx="256" cy="256" r="112" fill="none" stroke="#efba63" stroke-width="26" stroke-dasharray="492 82" transform="rotate(46 256 256)"/>
+  <path d="M209 165h100v44h-50v36h41c43 0 66 21 66 57 0 38-28 62-74 62h-82v-44h76c20 0 32-9 32-23 0-14-11-21-31-21h-29v45h-49z" fill="#fffdf9"/>
+</svg>
